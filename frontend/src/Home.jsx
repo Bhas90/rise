@@ -11,6 +11,7 @@ import WhatsAppButton from "./WhatsAppButton";
 import PopupForm from "./PopupForm";
 import AttentionGrabberButton from "./AttentionGrabberButton";
 import FloorPlans from "./FloorPlans";
+import TridasaVideo from "./TridasaVideo";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -29,6 +30,7 @@ const Home = () => {
         <h2 className="section-heading"></h2>
         <ProjectOverview />
       </div>
+      <TridasaVideo/>
       <div id="amenities">
         <h2 className="section-heading"></h2>
         <AmenitiesSection />
