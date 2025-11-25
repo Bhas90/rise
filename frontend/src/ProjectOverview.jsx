@@ -10,34 +10,34 @@ import {
 
 const projectHighlights = [
   {
-    icon: <MapPin className="w-8 h-8 text-[#00b4e6]" />,
+    icon: <MapPin className="w-8 h-8 text-[#fea611]" />,
     title: "LOCATION",
-    desc: "Osman Nagar, Tellapur",
+    desc: "Nallagandla, Tellapur Rd",
   },
   {
-    icon: <Home className="w-8 h-8 text-[#00b4e6]" />,
+    icon: <Home className="w-8 h-8 text-[#fea611]" />,
     title: "SIZE RANGE",
-    desc: "1420 - 4400 Sq.Ft.",
+    desc: "1733-2751 Sq.Ft.",
   },
   {
-    icon: <Ruler className="w-8 h-8 text-[#00b4e6]" />,
-    title: "PROJECT AREA",
-    desc: "12.95 Acres",
+    icon: <Ruler className="w-8 h-8 text-[#fea611]" />,
+    title: "Total Area",
+    desc: "10.38 Acres",
   },
   {
-    icon: <Grid3x3 className="w-8 h-8 text-[#00b4e6]" />,
-    title: "NO. OF FLATS",
-    desc: "2055",
+    icon: <Grid3x3 className="w-8 h-8 text-[#fea611]" />,
+    title: "Towers & Floors",
+    desc: "7 Towers | 17 Floors",
   },
   {
-    icon: <Users className="w-8 h-8 text-[#00b4e6]" />,
-    title: "CLUBHOUSE",
-    desc: "1,47,000 SFT",
+    icon: <Users className="w-8 h-8 text-[#fea611]" />,
+    title: "Low Density",
+    desc: "952 Units | 92 Units Per Acre",
   },
   {
-    icon: <Layers className="w-8 h-8 text-[#00b4e6]" />,
-    title: "NO. OF FLOORS",
-    desc: "G+39 Floors",
+    icon: <Layers className="w-8 h-8 text-[#fea611]" />,
+    title: "Clubhouse",
+    desc: "55,000 SQ.FT",
   },
 ];
 

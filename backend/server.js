@@ -37,7 +37,7 @@ const transporter = nodemailer.createTransport({
 // ✅ Auto-reply to user
 const sendAutoReply = async (userEmail, userName) => {
   const mailOptions = {
-    from: `"Vajra Westcity" <admin@aurealconsulting.com>`,
+    from: `"Tridasa Rise" <admin@aurealconsulting.com>`,
     to: userEmail,
     subject: "Thank You for Your Interest!",
     html: `
@@ -47,13 +47,13 @@ const sendAutoReply = async (userEmail, userName) => {
         </div>
         <div style="padding:20px;">
           <h2 style="color:#047bc5;">Hello ${userName},</h2>
-          <p>Thank you for reaching out to <strong>Vajra Westcity</strong>!</p>
+          <p>Thank you for reaching out to <strong>Tridasa Rise</strong>!</p>
           <p>We’ll get in touch with you shortly to assist you further.</p>
           <hr style="border:none; border-top:1px solid #ddd; margin:20px 0;" />
-          <p>If you have any questions, call us at <a href="tel:+919392925831" style="color:#047bc5;">+91-9392925831</a>.</p>
+          <p>If you have any questions, call us at <a href="tel:+918977516130" style="color:#047bc5;">+91-8977516130</a>.</p>
         </div>
         <div style="background-color:#f0f0f0; padding:15px 20px; text-align:center; color:#666;">
-          <p style="margin:0; font-style:italic;">Warm regards,<br/>Team Vajra Westcity</p>
+          <p style="margin:0; font-style:italic;">Warm regards,<br/>Team Tridasa Rise</p>
         </div>
       </div>
     `,
@@ -64,20 +64,40 @@ const sendAutoReply = async (userEmail, userName) => {
 // ✅ Notify admin
 const notifyAdmin = async (formData) => {
   const mailOptions = {
-    from: `"Vajra Westcity" <admin@aurealconsulting.com>`,
+    from: `"Tridasa Rise" <admin@aurealconsulting.com>`,
     to: "azmath@aurealconsulting.com",
-    subject: "New Lead - Vajra Westcity",
+    subject: "New Lead - Tridasa Rise",
     html: `
-      <div style="font-family: Arial; max-width:600px; margin:auto; border:1px solid #ddd; border-radius:8px;">
+      <div style="font-family: Arial; max-width:600px; margin:auto; border:1px solid #ddd; border-radius:8px; overflow:hidden;">
         <div style="background-color:#047bc5; color:white; padding:15px 20px; text-align:center;">
           <h1 style="margin:0;">New Inquiry Received</h1>
         </div>
-        <table style="width:100%; border-collapse:collapse;">
-          <tr><td><b>Name</b></td><td>${formData.name}</td></tr>
-          <tr><td><b>Email</b></td><td>${formData.email}</td></tr>
-          <tr><td><b>Mobile</b></td><td>${formData.mobile}</td></tr>
-          <tr><td><b>IP Address</b></td><td>${formData.ip}</td></tr>
-        </table>
+        <table style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif; font-size:14px; color:#333;">
+  <tr style="background:#f7f7f7;">
+    <td style="padding:10px 15px; font-weight:bold; width:150px;">Name</td>
+    <td style="padding:10px 15px;">${formData.name}</td>
+  </tr>
+
+  <tr>
+    <td style="padding:10px 15px; font-weight:bold;">Email</td>
+    <td style="padding:10px 15px;">
+      <a href="mailto:${formData.email}" style="color:#0d6efd; text-decoration:none;">
+        ${formData.email}
+      </a>
+    </td>
+  </tr>
+
+  <tr style="background:#f7f7f7;">
+    <td style="padding:10px 15px; font-weight:bold;">Mobile</td>
+    <td style="padding:10px 15px;">${formData.mobile}</td>
+  </tr>
+
+  <tr>
+    <td style="padding:10px 15px; font-weight:bold;">IP Address</td>
+    <td style="padding:10px 15px;">${formData.ip}</td>
+  </tr>
+</table>
+
         <div style="background-color:#f7f7f7; padding:10px 15px;">
           <p>Please follow up with this lead as early as possible.</p>
         </div>
@@ -105,7 +125,7 @@ const pushToTeleCRM = async (lead) => {
     actions: [
       {
         type: "SYSTEM_NOTE",
-        text: "Lead Source: Vajra Westcity Website",
+        text: "Lead Source: Tridasa Rise Website",
       },
     ],
   };

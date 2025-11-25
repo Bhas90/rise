@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import logo from "./assets/vajra-banner-1.png";
+import logo from "./assets/rise_banner_1.png";
 
 const Banner = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -112,9 +112,9 @@ const Banner = () => {
           </h1>
           <p className="text-lg md:text-xl text-gray-100 mb-4">
             Schedule your{" "}
-            <span style={{ color: "#00b4e6" }}>exclusive site visit</span> today at{" "}
-            <span style={{ color: "#00b4e6" }}>
-              <strong>Osman Nagar</strong>
+            <span style={{ color: "#fea611" }}>exclusive site visit</span> today at{" "}
+            <span style={{ color: "#fea611" }}>
+              <strong>Nallagandla, Tellapur Rd</strong>
             </span>{" "}
             — Hyderabad’s most promising address for future-forward living.
           </p>
@@ -182,7 +182,7 @@ const Banner = () => {
                 className="mr-2 mt-1"
               />
               <span>
-                I authorize Vajra WestCity to Call, SMS, Email or WhatsApp me. I also accept T&C and Privacy Policy.
+                I authorize Tridasa Realty to Call, SMS, Email or WhatsApp me. I also accept T&C and Privacy Policy.
               </span>
             </div>
             {errors.agreeTerms && (
@@ -192,7 +192,7 @@ const Banner = () => {
             <button
               type="submit"
               disabled={isSubmitting || hasSubmitted}
-              className={`w-full text-white p-3 rounded text-lg transition bg-gradient-to-r from-[#002954] to-[#00b4e6] hover:opacity-90 ${
+              className={`w-full text-white p-3 rounded text-lg transition bg-gradient-to-r from-[#002954] to-[#fea611] hover:opacity-90 ${
                 hasSubmitted ? "opacity-60 cursor-not-allowed" : ""
               }`}
             >

@@ -18,7 +18,7 @@ const AdvantageSection = () => {
     <section className="bg-gradient-to-r from-gray-50 via-white to-gray-100 py-16 px-6">
       <div className="max-w-6xl mx-auto text-center animate-fade-in">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 text-gray-900">
-          Exclusive <span style={{ color: '#00b4e6' }}>NRI Support</span>
+          Exclusive <span style={{ color: '#fea611' }}>NRI Support</span>
         </h2>
 
         <p className="text-xl text-gray-700 mb-8">Get Instant Help</p>
@@ -31,7 +31,7 @@ const AdvantageSection = () => {
                 key={idx}
                 className="flex items-center p-5 bg-white/50 backdrop-blur-lg rounded-xl shadow-lg transition-transform transform hover:scale-105"
               >
-                <FaCheckCircle style={{ color: '#00b4e6' }} />
+                <FaCheckCircle style={{ color: '#fea611' }} />
                 <span className="px-2 text-lg text-gray-800">{item}</span>
               </li>
             ))}
@@ -42,7 +42,7 @@ const AdvantageSection = () => {
                 key={idx}
                 className="flex items-center p-5 bg-white/50 backdrop-blur-lg rounded-xl shadow-lg transition-transform transform hover:scale-105"
               >
-                <FaCheckCircle style={{ color: '#00b4e6' }} />
+                <FaCheckCircle style={{ color: '#fea611' }} />
                 <span className="px-2 text-lg text-gray-800">{item}</span>
               </li>
             ))}

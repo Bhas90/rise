@@ -18,7 +18,7 @@ const PricingSection = () => {
     <section className="bg-white py-12 px-4 md:px-16 lg:px-24 text-center">
 
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 text-gray-900">
-        Pricing & <span style={{ color: '#00b4e6' }}>Plans</span>
+        Pricing & <span style={{ color: '#fea611' }}>Plans</span>
       </h2>
 
       <hr className="border-t-2 border-yellow-800 w-24 mx-auto mb-8" />
@@ -33,30 +33,19 @@ const PricingSection = () => {
 
         {/* 2 BHK */}
         <div className="flex justify-between pt-4 text-left">
-          <p className="text-black">2 BHK</p>
-          <p className="text-black">1420 SFT</p>
-          <p className="text-black">₹1.03 Cr*</p>
+          <p className="text-black">3 BHK</p>
+          <p className="text-black">1733-2358 SFT</p>
+          <p className="text-black">₹1.24 Cr*</p>
         </div>
 
         {/* 3 BHK – PRICE ON REQUEST BUTTON */}
         <div className="flex justify-between pt-4 text-left">
-          <p className="text-black">3 BHK</p>
-          <p className="text-black">1740-2030 SFT</p>
+          <p className="text-black">4 BHK</p>
+          <p className="text-black">2751 SFT</p>
           
           <button
             onClick={openPopup}
-            className="text-white px-2.5 py-1 rounded bg-[#002954] hover:bg-[#00b4e6] transition"
-          >
-            Request Price
-          </button>
-        </div>
-        {/* 4 BHK */}
-        <div className="flex justify-between pt-4 text-left">
-          <p className="text-black">4 BHK</p>
-          <p className="text-black">3500-4400 SFT</p>
-          <button
-            onClick={openPopup}
-            className="text-white px-2.5 py-1 rounded bg-[#002954] hover:bg-[#00b4e6] transition"
+            className="text-white px-2.5 py-1 rounded bg-[#002954] hover:bg-[#fea611] transition"
           >
             Request Price
           </button>
@@ -73,7 +62,7 @@ const PricingSection = () => {
       <button
         onClick={scrollToBanner}
         className="mt-6 text-white px-6 py-3 rounded shadow blinking-button 
-                transition bg-gradient-to-r from-[#002954] to-[#00b4e6] hover:opacity-90"
+                transition bg-gradient-to-r from-[#002954] to-[#fea611] hover:opacity-90"
       >
         Price Breakup & Payment Plan
       </button>

@@ -1,46 +1,77 @@
-import React, { useState, useEffect, useRef } from "react";
-import TowerAonUnoImg from "./assets/vajra-west-city-tower-a.webp";
-import TowerEkaOdinImg from "./assets/vajra-west-city-towe-b.webp";
-import MasterPlanImg from "./assets/vajra-west-city-master-plan.webp";
+// React component with Master Plan (single image), Floor Plans (manual slider), and Unit Plans (manual slider)
+import React, { useState, useRef } from "react";
 
-import Floor1 from "./assets/2.5.webp";
-import Floor2 from "./assets/2.5bhk.webp";
-import Floor3 from "./assets/3-bhk.webp";
-import Floor4 from "./assets/2030-west.webp";
-import Floor5 from "./assets/2030-east.webp";
+import MasterPlanImg from "./assets/master-plan.webp";
 
-// Floor plan images
-const floorPlanImages = [Floor1, Floor2, Floor3, Floor4, Floor5];
+import TowerAandB from "./assets/toweraandb.webp";
+import TowerCandG from "./assets/towercandg.webp";
+import TowerDandF from "./assets/towerdandf.webp";
+import TowerE from "./assets/towere.webp";
 
-// Lightbox Component
-const Lightbox = ({ images, index, onClose, onNext, onPrev }) => {
-  if (!images || images.length === 0) return null;
+// UNIT PLAN IMAGES
+import Rise3 from "./assets/tridasa-rise-3-207-100.jpeg";
+import Rise3CG from "./assets/tridasa-rise-3-cg-207-100.jpeg";
+import Rise3AB from "./assets/tridasa-rise-3ab-207-100.jpeg";
+import Rise from "./assets/tridasa-rise-207-100.jpeg";
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[9999]">
-      <button
-        className="absolute top-4 right-4 text-white text-3xl"
-        onClick={onClose}
-      >
-        &times;
-      </button>
+import RiseAB from "./assets/tridasa-rise-ab-207-100.jpeg";
+import RiseABDF from "./assets/tridasa-rise-abdf-207-100.jpeg";
+import RiseABDFW from "./assets/tridasa-rise-abdf-w-207-100.jpeg";
+import RiseABDFE from "./assets/tridasa-rise-abdfe-207-100.jpeg";
 
-      <button className="absolute left-4 text-white text-4xl" onClick={onPrev}>
-        ‹
-      </button>
+import RiseCG from "./assets/tridasa-rise-cg-207-100.jpeg";
+import RiseCGE from "./assets/tridasa-rise-cg-e-207-100.jpeg";
+import RiseCGEF from "./assets/tridasa-rise-cg-ef-207-100.jpeg";
+import RiseCGW from "./assets/tridasa-rise-cg-w-207-100.jpeg";
 
-      <img
-        src={images[index]}
-        alt="floorplan"
-        className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"
-      />
+import RiseDEF from "./assets/tridasa-rise-def-207-100.jpeg";
+import RiseDEFN from "./assets/tridasa-rise-defn-207-100.jpeg";
+import RiseDEFW from "./assets/tridasa-rise-defw-207-100.jpeg";
 
-      <button className="absolute right-4 text-white text-4xl" onClick={onNext}>
-        ›
-      </button>
-    </div>
-  );
+import RiseEE from "./assets/tridasa-rise-e-207-100.jpeg";
+import RiseEE2 from "./assets/tridasa-rise-ee-207-100.jpeg";
+import RiseEE3 from "./assets/tridasa-rise-ee3-207-100.jpeg";
+
+import RiseWE from "./assets/tridasa-rise-we-207-100.jpeg";
+
+// TOWER PLAN IMAGES
+const towerPlanImages = [TowerAandB, TowerCandG, TowerDandF, TowerE];
+
+// UNIT PLAN IMAGES ARRAY
+const unitPlanImages = [
+  Rise3, Rise3CG, Rise3AB, Rise,
+  RiseAB, RiseABDF, RiseABDFW, RiseABDFE,
+  RiseCG, RiseCGE, RiseCGEF, RiseCGW,
+  RiseDEF, RiseDEFN, RiseDEFW,
+  RiseEE, RiseEE2, RiseEE3,
+  RiseWE
+];
+
+const scrollByImage = (ref, direction) => {
+  if (!ref.current) return;
+  const imgWidth = ref.current.firstChild?.clientWidth || 300;
+  ref.current.scrollBy({
+    left: direction === "left" ? -imgWidth : imgWidth,
+    behavior: "smooth",
+  });
 };
+
+
+// Lightbox component
+const Lightbox = ({ images, index, onClose, onNext, onPrev }) => (
+  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[9999]">
+    <button className="absolute top-4 right-4 text-white text-3xl" onClick={onClose}>×</button>
+    <button className="absolute left-4 text-white text-4xl" onClick={onPrev}>‹</button>
+
+    <img
+      src={images[index]}
+      alt="view"
+      className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"
+    />
+
+    <button className="absolute right-4 text-white text-4xl" onClick={onNext}>›</button>
+  </div>
+);
 
 const FloorPlans = () => {
   const [activeTab, setActiveTab] = useState("Master Plan");
@@ -50,27 +81,7 @@ const FloorPlans = () => {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const sliderRef = useRef(null);
-
-  // Infinite Auto-Slider for Floor Plans
-  useEffect(() => {
-    if (activeTab !== "Floor Plans") return;
-
-    const slider = sliderRef.current;
-    let scrollAmount = 0;
-
-    const slide = setInterval(() => {
-      if (!slider) return;
-      scrollAmount += 1.5; // speed
-      slider.scrollLeft = scrollAmount;
-
-      // reset to infinite loop
-      if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-        scrollAmount = 0;
-      }
-    }, 20);
-
-    return () => clearInterval(slide);
-  }, [activeTab]);
+  const unitSliderRef = useRef(null);
 
   const openLightbox = (images, index = 0) => {
     setLightboxImages(images);
@@ -78,67 +89,21 @@ const FloorPlans = () => {
     setLightboxOpen(true);
   };
 
-  const closeLightbox = () => setLightboxOpen(false);
+  // Manual scroll buttons
+  const scrollLeft = (ref) => ref.current.scrollBy({ left: -300, behavior: "smooth" });
+  const scrollRight = (ref) => ref.current.scrollBy({ left: 300, behavior: "smooth" });
 
-  const nextImage = () =>
-    setLightboxIndex((prev) =>
-      prev === lightboxImages.length - 1 ? 0 : prev + 1
-    );
-
-  const prevImage = () =>
-    setLightboxIndex((prev) =>
-      prev === 0 ? lightboxImages.length - 1 : prev - 1
-    );
-
-  const scrollToBanner = () => {
-    const bannerSection = document.getElementById("banner-section");
-    if (bannerSection) bannerSection.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const tabs = ["Master Plan", "TOWER A", "TOWER B", "Floor Plans"];
-
-  const tabContent = {
-    "TOWER A": {
-      image: TowerAonUnoImg,
-      images: [TowerAonUnoImg],
-      highlights: [
-        { title: "Spacious Layouts", desc: "Designed with openness and comfort in mind." },
-        { title: "Prime Location", desc: "Located at the heart of the community." },
-        { title: "Elegant Interiors", desc: "High-end finishes and fixtures." },
-      ],
-    },
-
-    "TOWER B": {
-      image: TowerEkaOdinImg,
-      images: [TowerEkaOdinImg],
-      highlights: [
-        { title: "Contemporary Design", desc: "Modern layouts and stunning views." },
-        { title: "Premium Living", desc: "Crafted to perfection." },
-        { title: "Balanced Lifestyle", desc: "Luxury meets functionality." },
-      ],
-    },
-
-    "Master Plan": {
-      image: MasterPlanImg,
-      images: [MasterPlanImg],
-      highlights: [
-        { title: "12.95 Acres of Tranquility", desc: "Thoughtfully planned open spaces." },
-        { title: "Holistic Living", desc: "Wellness, lifestyle & convenience." },
-        { title: "Connectivity", desc: "Seamless access across the community." },
-      ],
-    },
-  };
+  const tabs = ["Master Plan", "Floor Plans", "Unit Plans"];
 
   return (
     <section className="scroll-mt-10 py-12 px-4 md:px-16 bg-white" id="master">
       
-      {/* Heading */}
       <div className="text-center mb-10">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 text-gray-900">
-          With harmony in <span style={{ color: "#00b4e6" }}>Nature</span>
+          With harmony in <span style={{ color: "#fea611" }}>Nature</span>
         </h2>
         <p className="text-gray-600 max-w-xl mx-auto">
-          Vajra West City’s elegant blocks offer stunning views and world-class living.
+          Tridasa Rise’s elegant blocks offer stunning views and world-class living.
         </p>
       </div>
 
@@ -147,73 +112,106 @@ const FloorPlans = () => {
         {tabs.map((tab) => (
           <button
             key={tab}
+            onClick={() => setActiveTab(tab)}
             className={`text-lg font-medium px-4 py-2 border-b-2 ${
               activeTab === tab
                 ? "text-[#4f1021] border-[#4f1021]"
                 : "text-gray-600 border-transparent"
             }`}
-            onClick={() => setActiveTab(tab)}
           >
             {tab}
           </button>
         ))}
       </div>
 
-      {/* ---------------------- */}
-      {/* NON-FLOOR-PLAN CONTENT */}
-      {/* ---------------------- */}
-
-      {activeTab !== "Floor Plans" && (
-        <div className="py-12 px-10 flex flex-col md:flex-row items-start justify-start gap-6">
-          
-          {/* Main Image */}
+      {/* MASTER PLAN */}
+      {activeTab === "Master Plan" && (
+        <div className="flex flex-col items-center">
           <img
-            src={tabContent[activeTab].image}
-            alt={`${activeTab} Plan`}
-            className="w-full md:max-w-md lg:max-w-lg xl:max-w-xl rounded-lg shadow cursor-pointer"
-            onClick={() => openLightbox(tabContent[activeTab].images)}
+            src={MasterPlanImg}
+            alt="Master Plan"
+            className="rounded-lg shadow cursor-pointer max-w-3xl"
+            onClick={() => openLightbox([MasterPlanImg])}
           />
-
-          {/* Highlights */}
-          <div className="text-gray-700 space-y-8 w-full md:w-1/2 xl:w-[45%]">
-            {tabContent[activeTab].highlights.map((item, index) => (
-              <div key={index}>
-                <h4 className="font-semibold text-gray-900">{item.title}</h4>
-                <p>{item.desc}</p>
-              </div>
-            ))}
-
-            <button
-              onClick={scrollToBanner}
-              className="border border-[#4f1021] text-[#4f1021] px-5 py-2 rounded hover:bg-[#4f1021]/10 transition"
-            >
-              Get Pricing
-            </button>
-          </div>
         </div>
       )}
 
-      {/* ---------------------- */}
-      {/* FLOOR PLANS SLIDER ONLY */}
-      {/* ---------------------- */}
-
+      {/* FLOOR PLANS (Manual slider) */}
       {activeTab === "Floor Plans" && (
-  <div className="mt-10 overflow-hidden relative">
+  <div className="relative mt-10">
+
+    {/* Left arrow */}
+    <button
+      className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 z-20 rounded-full"
+      onClick={() => scrollByImage(sliderRef, "left")}
+    >
+      ‹
+    </button>
+
+    {/* Images */}
     <div
       ref={sliderRef}
-      className="flex gap-4 overflow-x-hidden w-full"
-      style={{ maxWidth: "100%", width: "100%", overflowX: "hidden" }}
+      className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth"
+      style={{ scrollbarWidth: "none" }}
     >
-      {floorPlanImages.map((img, index) => (
+      {towerPlanImages.map((img, idx) => (
         <img
-          key={index}
+          key={idx}
           src={img}
-          alt={`floor-${index}`}
-          className="w-1/3 md:w-1/3 lg:w-1/3 h-auto rounded-lg shadow cursor-pointer flex-shrink-0"
-          onClick={() => openLightbox(floorPlanImages, index)}
+          alt={`tower-${idx}`}
+          className="w-1/3 rounded-lg shadow cursor-pointer flex-shrink-0"
+          onClick={() => openLightbox(towerPlanImages, idx)}
         />
       ))}
     </div>
+
+    {/* Right arrow */}
+    <button
+      className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 z-20 rounded-full"
+      onClick={() => scrollByImage(sliderRef, "right")}
+    >
+      ›
+    </button>
+  </div>
+)}
+
+
+      {/* UNIT PLANS (Manual slider) */}
+     {activeTab === "Unit Plans" && (
+  <div className="relative mt-10">
+
+    {/* Left arrow */}
+    <button
+      className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 z-20 rounded-full"
+      onClick={() => scrollByImage(unitSliderRef, "left")}
+    >
+      ‹
+    </button>
+
+    {/* Images */}
+    <div
+      ref={unitSliderRef}
+      className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth"
+      style={{ scrollbarWidth: "none" }}
+    >
+      {unitPlanImages.map((img, idx) => (
+        <img
+          key={idx}
+          src={img}
+          alt={`unit-${idx}`}
+          className="w-1/3 rounded-lg shadow cursor-pointer flex-shrink-0"
+          onClick={() => openLightbox(unitPlanImages, idx)}
+        />
+      ))}
+    </div>
+
+    {/* Right arrow */}
+    <button
+      className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 z-20 rounded-full"
+      onClick={() => scrollByImage(unitSliderRef, "right")}
+    >
+      ›
+    </button>
   </div>
 )}
 
@@ -223,9 +221,13 @@ const FloorPlans = () => {
         <Lightbox
           images={lightboxImages}
           index={lightboxIndex}
-          onClose={closeLightbox}
-          onNext={nextImage}
-          onPrev={prevImage}
+          onClose={() => setLightboxOpen(false)}
+          onNext={() =>
+            setLightboxIndex((i) => (i + 1) % lightboxImages.length)
+          }
+          onPrev={() =>
+            setLightboxIndex((i) => (i - 1 + lightboxImages.length) % lightboxImages.length)
+          }
         />
       )}
     </section>

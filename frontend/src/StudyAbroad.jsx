@@ -13,8 +13,8 @@ const StudyAbroad = () => {
 
         {/* Main Content */}
         <p className="text-gray-700 mt-4">
-        <strong>Vajra West City </strong>stands as a symbol of trust, innovation, and contemporary living in Hyderabad’s rapidly evolving real estate landscape. Since its inception, Vajra West City has been committed to redefining urban lifestyles by delivering thoughtfully planned residential communities that reflect excellence in design, engineering, and long-term value. <br></br><br></br>
-        Our team at <strong> Vajra West City</strong>, we believe that a home is not just a place to live, but a space that inspires growth, connection, and well-being. Our mission is to create environments where families thrive, relationships deepen, and lifestyles are elevated. Quality, transparency, and timely delivery are the cornerstones that guide every step of our development process.
+        <strong>Tridasa </strong> has built a reputation for combining vision, reliability, and sophistication in Hyderabad’s dynamic real estate landscape. With Tridasa Rise, they continue to deliver not just homes, but thoughtfully crafted communities designed for long-term living.<br></br><br></br>
+        Our team at <strong>Tridasa</strong>, a residential development is never just a structure — it is an opportunity to foster connections, inspire growth, and elevate daily living. Their mission is to create residential spaces that integrate modern design, functionality, and community well-being, making each project a holistic experience.
         </p>
 
         

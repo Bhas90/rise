@@ -8,53 +8,29 @@ import amenity6 from "./assets/swimming_pool.webp";
 import amenity7 from "./assets/walking_area.webp";
 import amenity8 from "./assets/spa.webp";
 import amenity9 from "./assets/yoga.webp";
+import amenity10 from "./assets/amenities-1.webp";
+import amenity11 from "./assets/amenities-2.webp";
+import amenity12 from "./assets/amenities-3.webp";
 
 // Block-wise amenities based on layout map
 const amenities = [
    
   {
     id: "clubhouse",
-    label: "1 FLOORS AMENITIES",
+    label: "CLUBHOUSE AMENITIES",
     items: [
-      "Grand Reception Lobby", "Double-Height Reception Lounge with Informal Seating Area",
-      "Double-Height Banquet Hall Pre-Function Lobby",
-      "Lounge Rooms",
-      "Central Kitchen for Banquet Halls"],
+      "Banquet Hall", "Guest Rooms", "Business Centre", "Mini Theatre", "2 Badminton Court", "Squash Court", "Provision for Super Market", "Provision for Creche", "Gym", "Swimming Pool", "Terrace Party Deck", "Indoor Games", "Outdoor Deck", "Yoga / Meditation Space", "Pilates / Aerobics", "Provision for Salon", "Hobby Zone", "Provision for Pharmacy", "Provision for ATM"
+    ],
   },
   {
-    id: "2nd",
-    label: "2 FLOORS AMENITIES",
-    items: ["Board Room", "Society Office", "Lounge", "Reading Room", "Cards Room"],
+    id: "outdoor",
+    label: "OUTDOOR AMENITIES",
+    items: ["Tennis Court", "Pickleball Court", "Cricket Net", "Basketball Court", "Skating Zone", "Senior Citizen Zone", "Space for Temple", "Kids Gardening", "Children Play Area", "Forest Walk", "Scented Garden", "Party Lawns", "Herbal Gardens", "Relaxation Gazebo", "Outdoor Fitness Space", "Work From Nature", "Sculpture", "Walking Track", "Grand Entrance"],
   },
   {
-    id: "3rd",
-    label: "3 FLOORS AMENITIES",
-    items: ["Preview Theatres – 2 Nos", "Party Halls – 2 Nos", "Pre-Function Hall", "Banquet Lawn"],
-  },
-  {
-    id: "4th",
-    label: "4 FLOORS AMENITIES",
-    items: ["Indoor Games Rooms", "Billiards Room", "Gym", "Outdoor Calisthenics Deck", "Yoga Room", "Aerobics Room"],
-  },
-  {
-    id: "5th",
-    label: "5 FLOORS AMENITIES",
-    items: ["Co-Working Space with Board Rooms", "Restaurant with Kitchen", "Guest Rooms – 11 Nos"],
-  },
-  {
-    id: "6th",
-    label: "6 FLOORS AMENITIES",
-    items: ["Preschool", "Tuition Rooms – 3 Nos", "Hobby Rooms – 3 Nos", "Kids’ Play Area / Activity Zone"],
-  },
-  {
-    id: "7th",
-    label: "7 FLOORS AMENITIES",
-    items: ["Ladies Salon", "Ladies Spa", "Men’s Salon", "Men’s Spa"],
-  },
-  {
-    id: "8th",
-    label: "8 FLOORS AMENITIES",
-    items: ["175 ft Long Infinity Pool", "Kids Pool", "Covered Seating Lounge", "Pool Deck"],
+    id: "tower",
+    label: "TOWER AMENITIES",
+    items: ["Children Activity Zone", "Yoga Space", "Multi-purpose Area", "Co-working Space", "Graffiti Wall", "Relaxation Lounge", "Kids Thrift Zone", "Ladies Zone", "Rock Climbing"],
   },
 ];
 
@@ -68,6 +44,9 @@ const images = [
   amenity7,
   amenity8,
   amenity9,
+  amenity10,
+  amenity11,
+  amenity12,
 ];
 
 const AmenitiesSection = () => {
@@ -92,7 +71,7 @@ const AmenitiesSection = () => {
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6">
           30+ Awesome Clubhouse Amenities{" "}
-          <span style={{ color: "#00b4e6" }}> Await!</span>
+          <span style={{ color: "#fea611" }}> Await!</span>
         </h2>
 
         {/* Auto-rotating images */}
@@ -114,7 +93,7 @@ const AmenitiesSection = () => {
               key={id}
               className={`px-4 py-2 rounded-lg text-sm sm:text-base font-medium transition ${
                 selected === id
-                  ? "text-white bg-gradient-to-r from-[#002954] to-[#00b4e6]"
+                  ? "text-white bg-gradient-to-r from-[#002954] to-[#fea611]"
                   : "bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
               }`}
               onClick={() => setSelected(id)}
