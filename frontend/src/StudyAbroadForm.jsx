@@ -6,7 +6,7 @@ import { MapPin } from "lucide-react";
 const StudyAbroadForm = () => {
   return (
     <div className="w-full relative">
-      <div className="md:hidden w-full px-1 py-2">
+      <div className="md:hidden w-full px-2 py-2">
       {/* MOBILE VIEW IMAGE */}
       <div className="md:hidden w-full h-[420px] bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${logo2})` }}></div>
       </div>
